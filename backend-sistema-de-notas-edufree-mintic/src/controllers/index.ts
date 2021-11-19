@@ -9,6 +9,5 @@ export * from './materia.controller';
 export * from './nota.controller';
 export * from './programa-academico.controller';
 export * from './rol.controller';
-export * from './usuario-grup.controller';
 export * from './usurio-grupo.controller';
 export * from './usuario.controller';
