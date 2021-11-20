@@ -1,5 +1,7 @@
 import {Entity, model, property, hasMany} from '@loopback/repository';
 import {Materia} from './materia.model';
+import {Usuario} from './usuario.model';
+import {UsarioGrupo} from './usario-grupo.model';
 
 @model({settings: {strict: false}})
 export class Grupo extends Entity {
@@ -26,6 +28,9 @@ export class Grupo extends Entity {
     type: 'string',
   })
   materiaId?: string;
+
+  @hasMany(() => Usuario, {through: {model: () => UsarioGrupo}})
+  grupo: Usuario[];
   // Define well-known properties here
 
   // Indexer property to allow additional data

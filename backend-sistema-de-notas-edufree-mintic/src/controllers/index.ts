@@ -10,3 +10,4 @@ export * from './grupo.controller';
 export * from './usuario-por-grupo.controller';
 export * from './rol-usuario.controller';
 export * from './rol.controller';
+export * from './grupo-usuario.controller';
