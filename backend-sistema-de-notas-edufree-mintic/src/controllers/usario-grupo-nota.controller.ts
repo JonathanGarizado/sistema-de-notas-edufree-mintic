@@ -1,3 +1,4 @@
+//Creamos la realcion de grupoUsuario a nota hasMany
 import {
   Count,
   CountSchema,

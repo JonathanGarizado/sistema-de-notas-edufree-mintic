@@ -1,4 +1,5 @@
-import {Entity, model, property} from '@loopback/repository';
+import {Entity, model, property, hasOne, hasMany} from '@loopback/repository';
+import {Usuario} from './usuario.model';
 
 @model({settings: {strict: false}})
 export class Rol extends Entity {
@@ -15,6 +16,8 @@ export class Rol extends Entity {
   })
   tipoUsuario: string;
 
+  @hasMany(() => Usuario)
+  usuarios: Usuario[];
   // Define well-known properties here
 
   // Indexer property to allow additional data

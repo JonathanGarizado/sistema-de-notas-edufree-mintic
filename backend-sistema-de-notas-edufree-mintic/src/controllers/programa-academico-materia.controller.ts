@@ -1,3 +1,5 @@
+//Creamos la realcion de programaAcademico a materia hasMany
+
 import {
   Count,
   CountSchema,

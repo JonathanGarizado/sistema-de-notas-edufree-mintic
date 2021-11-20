@@ -1,4 +1,4 @@
-// Creamos la relacion hasManyThrough desde usuario a grupo con intermedio usuarioGrupo
+//Creamos la realcion de materia a grupo hasMany
 import {
   Count,
   CountSchema,
@@ -6,7 +6,7 @@ import {
   repository,
   Where,
 } from '@loopback/repository';
-  import {
+import {
   del,
   get,
   getModelSchemaRef,
@@ -17,21 +17,20 @@ import {
   requestBody,
 } from '@loopback/rest';
 import {
-Usuario,
-UsarioGrupo,
-Grupo,
+  Materia,
+  Grupo,
 } from '../models';
-import {UsuarioRepository} from '../repositories';
+import {MateriaRepository} from '../repositories';
 
-export class UsuarioGrupoController {
+export class MateriaGrupoController {
   constructor(
-    @repository(UsuarioRepository) protected usuarioRepository: UsuarioRepository,
+    @repository(MateriaRepository) protected materiaRepository: MateriaRepository,
   ) { }
 
-  @get('/usuarios/{id}/grupos', {
+  @get('/materias/{id}/grupos', {
     responses: {
       '200': {
-        description: 'Array of Usuario has many Grupo through UsarioGrupo',
+        description: 'Array of Materia has many Grupo',
         content: {
           'application/json': {
             schema: {type: 'array', items: getModelSchemaRef(Grupo)},
@@ -44,37 +43,38 @@ export class UsuarioGrupoController {
     @param.path.string('id') id: string,
     @param.query.object('filter') filter?: Filter<Grupo>,
   ): Promise<Grupo[]> {
-    return this.usuarioRepository.grupos(id).find(filter);
+    return this.materiaRepository.grupos(id).find(filter);
   }
 
-  @post('/usuarios/{id}/grupos', {
+  @post('/materias/{id}/grupos', {
     responses: {
       '200': {
-        description: 'create a Grupo model instance',
+        description: 'Materia model instance',
         content: {'application/json': {schema: getModelSchemaRef(Grupo)}},
       },
     },
   })
   async create(
-    @param.path.string('id') id: typeof Usuario.prototype.id,
+    @param.path.string('id') id: typeof Materia.prototype.id,
     @requestBody({
       content: {
         'application/json': {
           schema: getModelSchemaRef(Grupo, {
-            title: 'NewGrupoInUsuario',
+            title: 'NewGrupoInMateria',
             exclude: ['id'],
+            optional: ['materiaId']
           }),
         },
       },
     }) grupo: Omit<Grupo, 'id'>,
   ): Promise<Grupo> {
-    return this.usuarioRepository.grupos(id).create(grupo);
+    return this.materiaRepository.grupos(id).create(grupo);
   }
 
-  @patch('/usuarios/{id}/grupos', {
+  @patch('/materias/{id}/grupos', {
     responses: {
       '200': {
-        description: 'Usuario.Grupo PATCH success count',
+        description: 'Materia.Grupo PATCH success count',
         content: {'application/json': {schema: CountSchema}},
       },
     },
@@ -91,13 +91,13 @@ export class UsuarioGrupoController {
     grupo: Partial<Grupo>,
     @param.query.object('where', getWhereSchemaFor(Grupo)) where?: Where<Grupo>,
   ): Promise<Count> {
-    return this.usuarioRepository.grupos(id).patch(grupo, where);
+    return this.materiaRepository.grupos(id).patch(grupo, where);
   }
 
-  @del('/usuarios/{id}/grupos', {
+  @del('/materias/{id}/grupos', {
     responses: {
       '200': {
-        description: 'Usuario.Grupo DELETE success count',
+        description: 'Materia.Grupo DELETE success count',
         content: {'application/json': {schema: CountSchema}},
       },
     },
@@ -106,6 +106,6 @@ export class UsuarioGrupoController {
     @param.path.string('id') id: string,
     @param.query.object('where', getWhereSchemaFor(Grupo)) where?: Where<Grupo>,
   ): Promise<Count> {
-    return this.usuarioRepository.grupos(id).delete(where);
+    return this.materiaRepository.grupos(id).delete(where);
   }
 }

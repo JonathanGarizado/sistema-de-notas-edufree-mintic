@@ -1,4 +1,5 @@
-import {Entity, model, property} from '@loopback/repository';
+import {Entity, model, property, hasMany} from '@loopback/repository';
+import {Grupo} from './grupo.model';
 
 @model({settings: {strict: false}})
 export class Materia extends Entity {
@@ -18,12 +19,10 @@ export class Materia extends Entity {
   @property({
     type: 'string',
   })
-  grupoId?: string;
-
-  @property({
-    type: 'string',
-  })
   programaAcademicoId?: string;
+
+  @hasMany(() => Grupo)
+  grupos: Grupo[];
   // Define well-known properties here
 
   // Indexer property to allow additional data

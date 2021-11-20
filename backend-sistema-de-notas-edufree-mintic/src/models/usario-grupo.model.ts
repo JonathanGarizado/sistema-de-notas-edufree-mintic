@@ -11,25 +11,23 @@ export class UsarioGrupo extends Entity {
   id?: string;
 
   @property({
-    type: 'string',
-    required: true,
-  })
-  idGrupo: string;
-
-  @property({
-    type: 'string',
-    required: true,
-  })
-  idUsuario: string;
-
-  @property({
     type: 'number',
-    required: true,
+    required: false,
   })
   calificacion: number;
 
   @hasMany(() => Nota)
   notas: Nota[];
+
+  @property({
+    type: 'string',
+  })
+  usuarioId?: string;
+
+  @property({
+    type: 'string',
+  })
+  grupoId?: string;
   // Define well-known properties here
 
   // Indexer property to allow additional data

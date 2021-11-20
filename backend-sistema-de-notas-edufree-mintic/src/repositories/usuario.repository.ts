@@ -1,10 +1,9 @@
 import {inject, Getter} from '@loopback/core';
-import {DefaultCrudRepository, repository, HasManyThroughRepositoryFactory, HasOneRepositoryFactory} from '@loopback/repository';
+import {DefaultCrudRepository, repository, HasManyThroughRepositoryFactory} from '@loopback/repository';
 import {DataEdufreeDataSource} from '../datasources';
-import {Usuario, UsuarioRelations, Grupo, UsarioGrupo, Rol} from '../models';
+import {Usuario, UsuarioRelations, Grupo, UsarioGrupo} from '../models';
 import {UsarioGrupoRepository} from './usario-grupo.repository';
 import {GrupoRepository} from './grupo.repository';
-import {RolRepository} from './rol.repository';
 
 export class UsuarioRepository extends DefaultCrudRepository<
   Usuario,
@@ -17,14 +16,10 @@ export class UsuarioRepository extends DefaultCrudRepository<
           typeof Usuario.prototype.id
         >;
 
-  public readonly rol: HasOneRepositoryFactory<Rol, typeof Usuario.prototype.id>;
-
   constructor(
-    @inject('datasources.DataEdufree') dataSource: DataEdufreeDataSource, @repository.getter('UsarioGrupoRepository') protected usarioGrupoRepositoryGetter: Getter<UsarioGrupoRepository>, @repository.getter('GrupoRepository') protected grupoRepositoryGetter: Getter<GrupoRepository>, @repository.getter('RolRepository') protected rolRepositoryGetter: Getter<RolRepository>,
+    @inject('datasources.DataEdufree') dataSource: DataEdufreeDataSource, @repository.getter('UsarioGrupoRepository') protected usarioGrupoRepositoryGetter: Getter<UsarioGrupoRepository>, @repository.getter('GrupoRepository') protected grupoRepositoryGetter: Getter<GrupoRepository>,
   ) {
     super(Usuario, dataSource);
-    this.rol = this.createHasOneRepositoryFactoryFor('rol', rolRepositoryGetter);
-    this.registerInclusionResolver('rol', this.rol.inclusionResolver);
     this.grupos = this.createHasManyThroughRepositoryFactoryFor('grupos', grupoRepositoryGetter, usarioGrupoRepositoryGetter,);
     this.registerInclusionResolver('grupos', this.grupos.inclusionResolver);
   }

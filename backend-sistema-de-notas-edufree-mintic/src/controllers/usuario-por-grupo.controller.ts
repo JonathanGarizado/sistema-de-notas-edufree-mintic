@@ -1,3 +1,4 @@
+// Creamos el controlador del modelo usuarioGrupo
 import {
   Count,
   CountSchema,
@@ -20,7 +21,7 @@ import {
 import {UsarioGrupo} from '../models';
 import {UsarioGrupoRepository} from '../repositories';
 
-export class UsurioGrupoController {
+export class UsuarioPorGrupoController {
   constructor(
     @repository(UsarioGrupoRepository)
     public usarioGrupoRepository : UsarioGrupoRepository,

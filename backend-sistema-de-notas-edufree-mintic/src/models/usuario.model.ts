@@ -42,11 +42,13 @@ export class Usuario extends Entity {
   })
   telefono: string;
 
-  @hasMany(() => Grupo, {through: {model: () => UsarioGrupo, keyFrom: 'idUsuario', keyTo: 'idGrupo'}})
-  grupos: Grupo[];
+  @property({
+    type: 'string',
+  })
+  rolId?: string;
 
-  @hasOne(() => Rol, {keyTo: 'tipoUsuario'})
-  rol: Rol;
+  @hasMany(() => Grupo, {through: {model: () => UsarioGrupo}})
+  grupos: Grupo[];
 
   constructor(data?: Partial<Usuario>) {
     super(data);

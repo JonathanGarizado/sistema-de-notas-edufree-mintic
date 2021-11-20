@@ -28,8 +28,10 @@ export class Grupo extends Entity {
   })
   docente: string;
 
-  @hasMany(() => Materia)
-  materias: Materia[];
+  @property({
+    type: 'string',
+  })
+  materiaId?: string;
   // Define well-known properties here
 
   // Indexer property to allow additional data
