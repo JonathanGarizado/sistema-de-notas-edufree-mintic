@@ -24,12 +24,6 @@ export class Grupo extends Entity {
 
   @property({
     type: 'string',
-    required: true,
-  })
-  docente: string;
-
-  @property({
-    type: 'string',
   })
   materiaId?: string;
   // Define well-known properties here
