@@ -1,1 +1,58 @@
-<p>usuario works!</p>
+
+<!-- @*Estilos CSS*@ 
+<style>
+.center {
+text-align: center
+}
+</style>
+
+@*Formulario de registro de usuarios*@  -->
+<h2 class="center">Registro de usuarios</h2>
+<form method="POST">
+    <div class="row">
+        <div class="form-group col-md-6">
+            <label for="inputnombre">Nombres *   </label>
+            
+            <input type="text" class="form-control" id="nombres" asp-for="#" required>
+           
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputapellidos">Apellidos *</label>
+            <input type="text" class="form-control" id="apellidos" asp-for="@migrante.apellidos" required>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-6">
+            <label for="inputtdocumento">Tipo de documento *</label>
+            <select id="tdocumento" class="form-control" asp-for="@migrante.tdocumento" required>
+                <option selected>Tipo de documento...</option>
+                <option>CÉDULA DE CIUDADANÍA</option>
+                <option>CÉDULA DE EXTRANJERA</option>
+                <option>DOCUMNETO EXTRANJERO</option>
+                <option>CÉDULA DE EXTRANJERÍA COLOMBIANA</option>
+                <option>PASAPORTE</option>
+                <option>REGISTRO CIVIL</option>
+                <option>TARJETA DE IDENTIDAD</option>
+            </select>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputnodocumento">Numero de documento *</label>
+            <input type="text" class="form-control" id="cedula" asp-for="@migrante.nodocumento" required>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-6">
+            <label for="inputemail">Correo electrónico</label>
+            <input type="text" class="form-control" id="inputemail" value=@UserManager.GetUserName(User) asp-for="@migrante.email" >
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputtelefono">Telefono</label>
+            <input type="text" class="form-control" id="telefono" asp-for="@migrante.telefono">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="inputtelefono">Ciudad</label>
+            <input type="text" class="form-control" id="ciudad" asp-for="@migrante.ciudad">
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Registrar</button>
+</form>
