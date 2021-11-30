@@ -7,13 +7,15 @@ import { UsuarioComponent } from './usuario/usuario.component';
 import { LoginComponent } from './login/login.component';
 import { EstudianteComponent } from './estudiante/estudiante.component';
 import { FormsModule } from '@angular/forms';
+import { DocenteComponent } from './docente/docente.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UsuarioComponent,
     LoginComponent,
-    EstudianteComponent
+    EstudianteComponent,
+    DocenteComponent
   ],
   imports: [
     BrowserModule,
