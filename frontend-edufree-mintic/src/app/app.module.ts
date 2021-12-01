@@ -9,6 +9,10 @@ import { EstudianteComponent } from './estudiante/estudiante.component';
 import { FormsModule } from '@angular/forms';
 import { DocenteComponent } from './docente/docente.component';
 import { ProgramaComponent } from './programa/programa.component';
+import { BarraNavegacionComponent } from './plantilla/barra-navegacion/barra-navegacion.component';
+import { PiePaginaComponent } from './plantilla/pie-pagina/pie-pagina.component';
+import { InicioComponent } from './plantilla/inicio/inicio.component';
+import { ErrorComponent } from './plantilla/error/error.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +21,11 @@ import { ProgramaComponent } from './programa/programa.component';
     LoginComponent,
     EstudianteComponent,
     DocenteComponent,
-    ProgramaComponent
+    ProgramaComponent,
+    BarraNavegacionComponent,
+    PiePaginaComponent,
+    InicioComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
