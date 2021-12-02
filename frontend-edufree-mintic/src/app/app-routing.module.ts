@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
 import { EstudianteComponent } from './estudiante/estudiante.component';
-import { UsuarioComponent } from './usuario/usuario.component';
 import { LoginComponent } from './login/login.component';
 import { DocenteComponent } from './docente/docente.component';
 import { ProgramaComponent } from './programa/programa.component';
@@ -20,10 +18,6 @@ const routes: Routes = [
     redirectTo: '/inicio'
   },
   {
-    path:"**",
-    component: ErrorComponent
-  },
-  {
     path: 'seguridad',
     loadChildren: () => import("./modulos/seguridad/seguridad.module").then(x => x.SeguridadModule)
   },
@@ -35,26 +29,26 @@ const routes: Routes = [
     path: 'pedidos',
     loadChildren: () => import("./modulos/pedidos/pedidos.module").then(x => x.PedidosModule)
   },
-  // {
-  //   path:"login",
-  //   component:LoginComponent
-  // },
-  // {
-  //   path:"estudiante",
-  //   component:EstudianteComponent
-  // },
-  // {
-  //   path:"usuario",
-  //   component:UsuarioComponent
-  // },
-  // {
-  //   path:"docente",
-  //   component:DocenteComponent
-  // },
-  // {
-  //   path:"programa",
-  //   component:ProgramaComponent
-  // }
+  {
+    path:"login",
+    component:LoginComponent
+  },
+  {
+    path:"estudiante",
+    component:EstudianteComponent
+  },
+  {
+    path:"docente",
+    component:DocenteComponent
+  },
+  {
+    path:"programa",
+    component:ProgramaComponent
+  },
+  {
+    path:"**",
+    component: ErrorComponent
+  }
 ];
 
 @NgModule({
