@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { EstudianteComponent } from './estudiante/estudiante.component';
-import { LoginComponent } from './login/login.component';
 import { DocenteComponent } from './docente/docente.component';
 import { ProgramaComponent } from './programa/programa.component';
 import { InicioComponent } from './plantilla/inicio/inicio.component';
@@ -28,10 +27,6 @@ const routes: Routes = [
   {
     path: 'pedidos',
     loadChildren: () => import("./modulos/pedidos/pedidos.module").then(x => x.PedidosModule)
-  },
-  {
-    path:"login",
-    component:LoginComponent
   },
   {
     path:"estudiante",
