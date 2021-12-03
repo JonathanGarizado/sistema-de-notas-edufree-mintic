@@ -5,3 +5,4 @@ export * from './materia.model';
 export * from './programa-academico.model';
 export * from './nota.model';
 export * from './rol.model';
+export * from './credenciales.model';

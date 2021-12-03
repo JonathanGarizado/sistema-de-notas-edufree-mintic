@@ -1,4 +1,5 @@
 // Creamos el controlador del modelo usuario
+import { service } from '@loopback/core';
 import {
   Count,
   CountSchema,
@@ -17,20 +18,51 @@ import {
   del,
   requestBody,
   response,
+  HttpErrors,
 } from '@loopback/rest';
-import {Usuario} from '../models';
-import {UsuarioRepository} from '../repositories';
+import { Credenciales, Usuario } from '../models';
+import { UsuarioRepository } from '../repositories';
+import { AutenticacionService } from '../services';
+import fetch from "node-fetch";
 
 export class UsuarioController {
   constructor(
     @repository(UsuarioRepository)
-    public usuarioRepository : UsuarioRepository,
-  ) {}
+    public usuarioRepository: UsuarioRepository,
+    @service(AutenticacionService)
+    public servicioAutenticacion: AutenticacionService
+  ) { }
+
+  @post("/identificarUsuario", {
+    responses: {
+      '200': {
+        description: "Identificación de usuarios"
+      }
+    }
+  })
+  async identificarUsuario(
+    @requestBody() credenciales: Credenciales
+  ) {
+    let p = await this.servicioAutenticacion.IdentificarPersona(credenciales.usuario, credenciales.clave)
+    if (p) {
+      let token = this.servicioAutenticacion.GenerarTokenJWT(p);
+      return {
+        datos: {
+          nombre: p.nombres,
+          email: p.email,
+          id: p.id
+        },
+        tk: token
+      }
+    } else {
+      throw new HttpErrors[401]("Datos inválidos")
+    }
+  }
 
   @post('/usuarios')
   @response(200, {
     description: 'Usuario model instance',
-    content: {'application/json': {schema: getModelSchemaRef(Usuario)}},
+    content: { 'application/json': { schema: getModelSchemaRef(Usuario) } },
   })
   async create(
     @requestBody({
@@ -44,14 +76,30 @@ export class UsuarioController {
       },
     })
     usuario: Omit<Usuario, 'id'>,
-  ): Promise<Usuario> {
-    return this.usuarioRepository.create(usuario);
+): Promise<Usuario> {
+  return this.usuarioRepository.create(usuario);
+
+    // let clave = this.servicioAutenticacion.GenerarClave();
+    // let claveCifrada = this.servicioAutenticacion.CifrarClave(clave);
+    // usuario.clave = claveCifrada;
+    // let p = await this.usuarioRepository.create(usuario);
+
+    // //Notificar al usuario
+    // let destino = usuario.email;
+    // let asunto = 'Registro en la plataforma';
+    // let contenido = `Hola ${usuario.nombres}, su nombre de usuario es: ${usuario.email}, su contraseña es: ${clave} `;
+    // fetch(`http://127.0.0.1:5000/envio-correo?correo_destino=${destino}&asunto=${asunto}&contenido=${contenido}`)
+    // .then((data:any) => {
+    //   console.log(data);
+    // })
+    // return p;
+
   }
 
   @get('/usuarios/count')
   @response(200, {
     description: 'Usuario model count',
-    content: {'application/json': {schema: CountSchema}},
+    content: { 'application/json': { schema: CountSchema } },
   })
   async count(
     @param.where(Usuario) where?: Where<Usuario>,
@@ -66,7 +114,7 @@ export class UsuarioController {
       'application/json': {
         schema: {
           type: 'array',
-          items: getModelSchemaRef(Usuario, {includeRelations: true}),
+          items: getModelSchemaRef(Usuario, { includeRelations: true }),
         },
       },
     },
@@ -80,13 +128,13 @@ export class UsuarioController {
   @patch('/usuarios')
   @response(200, {
     description: 'Usuario PATCH success count',
-    content: {'application/json': {schema: CountSchema}},
+    content: { 'application/json': { schema: CountSchema } },
   })
   async updateAll(
     @requestBody({
       content: {
         'application/json': {
-          schema: getModelSchemaRef(Usuario, {partial: true}),
+          schema: getModelSchemaRef(Usuario, { partial: true }),
         },
       },
     })
@@ -101,13 +149,13 @@ export class UsuarioController {
     description: 'Usuario model instance',
     content: {
       'application/json': {
-        schema: getModelSchemaRef(Usuario, {includeRelations: true}),
+        schema: getModelSchemaRef(Usuario, { includeRelations: true }),
       },
     },
   })
   async findById(
     @param.path.string('id') id: string,
-    @param.filter(Usuario, {exclude: 'where'}) filter?: FilterExcludingWhere<Usuario>
+    @param.filter(Usuario, { exclude: 'where' }) filter?: FilterExcludingWhere<Usuario>
   ): Promise<Usuario> {
     return this.usuarioRepository.findById(id, filter);
   }
@@ -121,7 +169,7 @@ export class UsuarioController {
     @requestBody({
       content: {
         'application/json': {
-          schema: getModelSchemaRef(Usuario, {partial: true}),
+          schema: getModelSchemaRef(Usuario, { partial: true }),
         },
       },
     })
