@@ -24,6 +24,8 @@ import { Credenciales, Usuario } from '../models';
 import { UsuarioRepository } from '../repositories';
 import { AutenticacionService } from '../services';
 import fetch from "node-fetch";
+import { authenticate } from '@loopback/authentication';
+
 
 export class UsuarioController {
   constructor(
@@ -33,7 +35,37 @@ export class UsuarioController {
     public servicioAutenticacion: AutenticacionService
   ) { }
 
-  @post("/identificarUsuario", {
+  // @post('/login', {
+  //   responses: {
+  //     '200': {
+  //       description: "Login ok"
+  //     }
+  //   }
+  // })
+  // async login(
+  //   @requestBody() credenciales: Credenciales
+  // ) {
+  //   try {
+  //     const usuarioEncontrado = await this.servicioAutenticacion.ValidarUsuario(credenciales);
+  //     if (usuarioEncontrado) {
+  //       // Generar Token
+  //       const token = await this.servicioAutenticacion.GenerarToken(usuarioEncontrado);
+  //       return {
+  //         token: token,
+  //         data: usuarioEncontrado
+  //       };
+  //     } else {
+  //       throw new HttpErrors['401']('Datos inválidos')
+  //     }
+
+  //   } catch (error) {
+  //     throw new HttpErrors['401']('Datos inválidas')
+  //   }
+
+  // }
+  
+  // @authenticate("admin")
+  @post('/identificarUsuario', {
     responses: {
       '200': {
         description: "Identificación de usuarios"
@@ -43,14 +75,14 @@ export class UsuarioController {
   async identificarUsuario(
     @requestBody() credenciales: Credenciales
   ) {
-    let p = await this.servicioAutenticacion.IdentificarPersona(credenciales.usuario, credenciales.clave)
+    let p = await this.servicioAutenticacion.IdentificarPersona(credenciales.email, credenciales.clave)
     if (p) {
       let token = this.servicioAutenticacion.GenerarTokenJWT(p);
       return {
         datos: {
           nombre: p.nombres,
           email: p.email,
-          id: p.id
+          id: p.id,
         },
         tk: token
       }
@@ -76,8 +108,8 @@ export class UsuarioController {
       },
     })
     usuario: Omit<Usuario, 'id'>,
-): Promise<Usuario> {
-  return this.usuarioRepository.create(usuario);
+  ): Promise<Usuario> {
+    return this.usuarioRepository.create(usuario);
 
     // let clave = this.servicioAutenticacion.GenerarClave();
     // let claveCifrada = this.servicioAutenticacion.CifrarClave(clave);
