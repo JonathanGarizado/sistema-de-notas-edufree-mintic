@@ -1,29 +1,63 @@
-import {injectable, /* inject, */ BindingScope} from '@loopback/core';
+import { injectable, /* inject, */ BindingScope } from '@loopback/core';
 import { repository } from '@loopback/repository';
-import { Usuario } from '../models';
+import { Credenciales, Usuario } from '../models';
 import { UsuarioRepository } from '../repositories';
-import {Llaves} from '../config/llaves';
+import { Llaves } from '../config/llaves';
 import generador from "password-generator";
-import cryptoJS from "crypto-js";
-import jwt from "jsonwebtoken";
+const cryptoJS = require('crypto-js');
+const jwt = require('jsonwebtoken');
 
-@injectable({scope: BindingScope.TRANSIENT})
+@injectable({ scope: BindingScope.TRANSIENT })
 export class AutenticacionService {
   constructor(
     @repository(UsuarioRepository)
     public usuarioRepository: UsuarioRepository
-  ) {}
+  ) { }
 
   /*
    * Add service methods here
    */
   
-  GenerarClave(){
+  // //Validar que un usuario exista
+  // async ValidarUsuario(credenciales: Credenciales) {
+  //   try {
+  //     const usuarioEncontrado = await this.usuarioRepository.findOne({
+  //       where: {
+  //         email: credenciales.email,
+  //         clave: credenciales.clave
+  //       }
+  //     }
+  //     );
+  //     if (usuarioEncontrado) {
+  //       return usuarioEncontrado
+  //     } else {
+  //       return false;
+  //     }
+  //   } catch (error) {
+  //     console.log(error.message)
+  //     return false;
+  //   }
+  // }
+
+  // //Generar un token
+  // async GenerarToken(usuario: Usuario){
+  //   const token = jwt.sign({
+  //     data: {
+  //       id: usuario.id,
+  //       email: usuario.email,
+  //       nombre: usuario.nombres + " " + usuario.apellidos,
+  //       rolId: usuario.rolId
+  //     }
+  //   },'fasdfsd#$%4"#658sd');
+  //   return token;
+  // }
+
+  GenerarClave() {
     let clave = generador(8, false);
     return clave;
   }
 
-  CifrarClave(clave: string){
+  CifrarClave(clave: string) {
     let claveCifrada = cryptoJS.MD5(clave).toString();
     return claveCifrada;
   }
@@ -40,19 +74,20 @@ export class AutenticacionService {
     }
   }
 
-  GenerarTokenJWT(usuario: Usuario){
+  GenerarTokenJWT(usuario: Usuario) {
     let token = jwt.sign({
-      data:{
+      data: {
         id: usuario.id,
         email: usuario.email,
         nombre: usuario.nombres + " " + usuario.apellidos,
+        rolId: usuario.rolId
       }
     },
-    Llaves.claveJWT);
+      Llaves.claveJWT);
     return token;
   }
 
-  ValidarTokenJWT(token: string){
+  ValidarTokenJWT(token: string) {
     try {
       let datos = jwt.verify(token, Llaves.claveJWT)
       return datos;

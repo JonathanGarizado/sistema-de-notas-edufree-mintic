@@ -8,6 +8,7 @@ import { ModeloIdentificar } from '../modelos/identificar.modelo';
 })
 export class SeguridadService {
 
+  url = 'http://localhost:3000';
   datosUsuarioEnSesion = new BehaviorSubject<ModeloIdentificar>(new ModeloIdentificar());
 
   constructor(private http: HttpClient) {
@@ -30,9 +31,9 @@ export class SeguridadService {
   }
 
 
-  Identificar(usuario: string, clave: string): Observable<ModeloIdentificar> {
-    return this.http.post<ModeloIdentificar>("localhost:3000/identificarPersona", {
-      usuario: usuario,
+  Identificar(email: string, clave: string): Observable<ModeloIdentificar> {
+    return this.http.post<ModeloIdentificar>(`${this.url}/identificarUsuario`, {
+      email: email,
       clave: clave
     }, {
       headers: new HttpHeaders({
@@ -63,7 +64,7 @@ export class SeguridadService {
     this.RefrescarDatosSesion(new ModeloIdentificar());
   }
 
-  seHaIniciadoSesion(){
+  SeHaIniciadoSesion(){
     let datosString = localStorage.getItem("datosSesion");
     return datosString;
   }

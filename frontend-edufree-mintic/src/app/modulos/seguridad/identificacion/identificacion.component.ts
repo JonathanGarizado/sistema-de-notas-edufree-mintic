@@ -25,16 +25,16 @@ export class IdentificacionComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // IdentificarUsuario(){
-  //   let usuario = this.fgValidador.controls["usuario"].value;
-  //   let clave = this.fgValidador.controls["clave"].value;
-  //   let claveCifrada= cryptoJS.MD5(clave).toString();
-  //   this.serviciosSeguridad.Identificar(usuario, claveCifrada).subscribe((datos:any) => {
-  //     this.serviciosSeguridad.AlmacenarSesion(datos);
-  //     this.router.navigate(["/inicio"])
-  //   }, (error: any) => {
-  //     alert("Datos invalidos")
-  //   });
-  // }
+  IdentificarUsuario(){
+    let email = this.fgValidador.controls["usuario"].value;
+    let clave = this.fgValidador.controls["clave"].value;
+    let claveCifrada= cryptoJS.MD5(clave).toString();
+    this.serviciosSeguridad.Identificar(email, claveCifrada).subscribe((datos:any) => {
+      this.serviciosSeguridad.AlmacenarSesion(datos);
+      this.router.navigate(["/inicio"])
+    }, (error: any) => {
+      alert("Datos invalidos")
+    });
+  }
 
 }
