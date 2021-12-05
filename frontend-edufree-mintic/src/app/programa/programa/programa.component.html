@@ -1,0 +1,23 @@
+<h1>Programas Academicos</h1>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col s4 ">
+        <div *ngFor="let p of listadoProgramas" class="card">
+          <div class="card-image">
+            <img src={{p.imagen}}>
+            <h1 class="card-title">{{p.nombre}}</h1>
+          </div>
+          <div class="card-content">
+            <p>{{p.tipoProgramaAcademico}}</p>
+          </div>
+          <div class="card-action">
+            <a class="btn btn-success" routerLink="/programa-editar/{{p.id}}">Editar</a>
+            <a class="btn btn-warning red" routerLink="/programa-eliminar/{{p.id}}">Eliminar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

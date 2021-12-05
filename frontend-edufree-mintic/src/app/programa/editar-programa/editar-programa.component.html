@@ -1,0 +1,37 @@
+
+  <div class="row">
+
+    <h3 class="center-align">
+      Editar Programa
+    </h3>
+    <article class="col s6 offset-s3">
+    <form [formGroup]="fgValidator" (ngSubmit)="EditarPrograma()" method="PUT">
+        <input type="hidden" formControlName="id" />
+      <div class="form-group">
+        <label class="active" for="exampleInputPrograma">Programa Academico</label>
+        <input formControlName="nombre" type="text" class="form-control" id="nombrePrograma" aria-describedby="ayudaPrograma"
+          placeholder="Ingrese Nombre Programa" required>
+  
+      </div>
+      <div class="form-group">
+        <label class="active" for="tipoProgramaAcademico">Selecione un Tipo Programa Acadmico</label>
+        <select formControlName="tipoProgramaAcademico" type="text" class="form-control" id="tipoProgramaAcademico" placeholder="Tipo Programa" required>
+          <option value="">Seleccione un tipo</option>
+          <option value="Técnico">Técnico</option>
+          <option value="Tecnólogo">Tecnólogo</option>
+          <option value="Pregrado">Pregrado</option>
+          <option value="Posgrado">Posgrado</option>
+          <option value="Doctorado">Doctorado</option>
+        </select>
+      </div>
+  
+      <div class="form-group">
+        <label class="active" for="exampleInputPassword1">Imagen</label>
+        <input formControlName="imagen" type="text" class="form-control" id="imagen" placeholder="Dirección web imagen" required>
+      </div>
+  
+      <button [disabled]="!fgValidator.valid" type="submit" class="btn btn-primary">Editar</button>
+      <a class="btn btn-warning red" routerLink="/programa">Cancelar</a>
+    </form>
+  </article>
+  </div>

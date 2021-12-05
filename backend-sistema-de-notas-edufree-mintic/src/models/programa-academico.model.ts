@@ -1,4 +1,4 @@
-import {Entity, model, property, hasMany} from '@loopback/repository';
+import {Entity, hasMany, model, property} from '@loopback/repository';
 import {Materia} from './materia.model';
 
 @model({settings: {strict: false}})
@@ -21,6 +21,12 @@ export class ProgramaAcademico extends Entity {
     required: true,
   })
   tipoProgramaAcademico: string;
+
+  @property({
+    type: 'string',
+    required: false,
+  })
+  imagen: string;
 
   @hasMany(() => Materia)
   materias: Materia[];
