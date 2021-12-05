@@ -96,6 +96,7 @@ export class UsuarioController {
 
   }
 
+
   @get('/usuarios/count')
   @response(200, {
     description: 'Usuario model count',
@@ -107,6 +108,8 @@ export class UsuarioController {
     return this.usuarioRepository.count(where);
   }
 
+  //Get que obtiene todo el listado de usuarios 
+  //Mirar los filtros de acuerdo al rol 
   @get('/usuarios')
   @response(200, {
     description: 'Array of Usuario model instances',

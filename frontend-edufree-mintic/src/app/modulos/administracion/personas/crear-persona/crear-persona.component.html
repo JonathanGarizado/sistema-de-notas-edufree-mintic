@@ -1,46 +1,60 @@
-
 <!-- Formulario de registro de usuarios -->
 
-<h2 class="center">Registro de usuarios</h2>
-<form>
-    <div class="row" >
+<h2 class="center">Registro de Usuarios</h2>
+<!-- FormGroup para validaciones -->
+<form [formGroup]="formUsuario" (ngSubmit)="guardarUsuario()">
+    <div class="d-flex flex-column align-items-center">
         <div class="form-group col-md-6">
-            <label for="inputnombre">Nombres *   </label>
-            <input type="text" class="form-control" id="nombres" asp-for="#" required>
+            <label for="inputnombre"></label>
+            <input type="text" class="form-control" id="nombres" asp-for="#" placeholder="Nombres"
+                formControlName="nombres">
         </div>
         <div class="form-group col-md-6">
-            <label for="inputapellidos">Apellidos *</label>
-            <input type="text" class="form-control" id="apellidos" asp-for="#" required>
+            <label for="inputapellidos"></label>
+            <input type="text" class="form-control" id="apellidos" asp-for="#" placeholder="Apellidos"
+                formControlName="apellidos">
         </div>
-    </div>
-    <div class="row">
         <div class="form-group col-md-6">
-            <label for="inputtdocumento" class="form-label">Tipo de documento *</label>
-            <select id="#" class="form-select" asp-for="#" required>
-                <option selected>Documento...</option>
-                <option>CÉDULA DE CIUDADANÍA</option>
+            <label for="inputtdocumento" class="form-label"></label>
+            <select id="#" class="form-select" asp-for="#">
+                <option selected>CÉDULA DE CIUDADANÍA</option>
                 <option>CÉDULA DE EXTRANJERA</option>
-                <option>DOCUMNETO EXTRANJERO</option>
-                <option>CÉDULA DE EXTRANJERÍA COLOMBIANA</option>
                 <option>PASAPORTE</option>
                 <option>REGISTRO CIVIL</option>
                 <option>TARJETA DE IDENTIDAD</option>
             </select>
         </div>
         <div class="form-group col-md-6">
-            <label for="inputnodocumento">Numero de documento *</label>
-            <input type="text" class="form-control" id="cedula" asp-for="#" required>
-        </div>
-    </div>
-    <div class="row">
-        <div class="form-group col-md-6">
-            <label for="inputemail">Correo electrónico</label>
-            <input type="text" class="form-control" id="email" asp-for="#" >
+            <label for="inputnodocumento"> </label>
+            <input type="text" class="form-control" id="cedula" asp-for="#" placeholder="Numero de documento"
+                formControlName="cedula">
         </div>
         <div class="form-group col-md-6">
-            <label for="inputtelefono">Telefono</label>
-            <input type="text" class="form-control" id="telefono" asp-for="#">
+            <label for="inputemail"></label>
+            <input type="text" class="form-control" id="email" asp-for="#" placeholder="Email" formControlName="email">
         </div>
+        <div class="form-group col-md-6">
+            <label for="inputtelefono"></label>
+            <input type="text" class="form-control" id="telefono" asp-for="#" placeholder="Telefono"
+                formControlName="telefono">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputrol"></label>
+            <input type="text" class="form-control" id="rol" asp-for="#" placeholder="Rol"
+                formControlName="rolId">
+        </div>
+        <!-- <div class="form-group col-md-6">
+            <label for="inputtdocumento" class="form-label"></label>
+            <select id="#" class="form-select" asp-for="#">
+                <option selected>Estudiante</option>
+                <option>Docente</option>
+                <option>Administrador</option>
+            </select>
+        </div> -->
+
+        <div class=" row">
+            <button [disabled]="!formUsuario.valid" type="submit" class="btn btn-primary m-3">Registrar</button>
+            <!-- <button type="submit" class="btn btn-primary m-3" (click)="crearUsuario()">Registrar</button>
+         --></div>
     </div>
-    <button type="submit" class="btn btn-primary">Registrar</button>
 </form>
