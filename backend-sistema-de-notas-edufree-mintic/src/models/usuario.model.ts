@@ -1,5 +1,4 @@
-import {Entity, model, property, hasOne, hasMany} from '@loopback/repository';
-import {Rol} from './rol.model';
+import {Entity, hasMany, model, property} from '@loopback/repository';
 import {Grupo} from './grupo.model';
 import {UsarioGrupo} from './usario-grupo.model';
 
@@ -38,7 +37,7 @@ export class Usuario extends Entity {
 
   @property({
     type: 'string',
-    required: false,
+    required: true,
   })
   clave: string;
 

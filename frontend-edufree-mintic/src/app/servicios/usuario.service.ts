@@ -21,9 +21,27 @@ export class UsuarioService {
 
   }
 
+  //Buscar un usuario por id
+  obtenerUsuariosPorId(id:string): Observable<ModeloUsuario> {
+    //return this.http.get<ModeloUsuario>(this.url + "/usuarios/"+{id})
+    return this.http.get<ModeloUsuario>(`${this.url}/usuarios/${id}`)
+    //return this.http.get<ModeloUsuario>(this.url + "/usuarios/61986895b08741237c5e636b")
+
+  }
+
   //Crear un usuario
   crearUsuario(usuario: ModeloUsuario): Observable<ModeloUsuario> {
     return this.http.post<ModeloUsuario>(this.url + "/usuarios", usuario,)
+  }
+
+   //Actualizar un usuario
+   actualizarUsuario(usuario: ModeloUsuario): Observable<ModeloUsuario> {
+    return this.http.put<ModeloUsuario>(`${this.url}/usuarios/${usuario.id}`, usuario,)
+  }
+
+   //Eliminar un usuario
+   eliminarUsuario(id: string): Observable<any>{
+    return this.http.post(this.url + "/usuarios", {id})
 
   }
 

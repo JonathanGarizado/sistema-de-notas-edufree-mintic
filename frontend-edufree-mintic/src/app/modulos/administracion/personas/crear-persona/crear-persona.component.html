@@ -7,7 +7,7 @@
         <div class="form-group col-md-6">
             <label for="inputnombre"></label>
             <input type="text" class="form-control" id="nombres" asp-for="#" placeholder="Nombres"
-                formControlName="nombres">
+                formControlName="nombres" required>
         </div>
         <div class="form-group col-md-6">
             <label for="inputapellidos"></label>
@@ -33,28 +33,35 @@
             <label for="inputemail"></label>
             <input type="text" class="form-control" id="email" asp-for="#" placeholder="Email" formControlName="email">
         </div>
+
+        <div class="form-group col-md-6">
+            <label for="inputclave"></label>
+            <input type="password" class="form-control" id="clave" placeholder="Contraseña" formControlName="clave">
+
+        </div>
+
         <div class="form-group col-md-6">
             <label for="inputtelefono"></label>
             <input type="text" class="form-control" id="telefono" asp-for="#" placeholder="Telefono"
                 formControlName="telefono">
         </div>
+
+
+
         <div class="form-group col-md-6">
-            <label for="inputrol"></label>
-            <input type="text" class="form-control" id="rol" asp-for="#" placeholder="Rol"
-                formControlName="rolId">
-        </div>
-        <!-- <div class="form-group col-md-6">
-            <label for="inputtdocumento" class="form-label"></label>
-            <select id="#" class="form-select" asp-for="#">
-                <option selected>Estudiante</option>
-                <option>Docente</option>
-                <option>Administrador</option>
+            <select class="form-control" type="text" id="rolId" formControlName="rolId">
+                <option value="61986838b08741237c5e6369" selected>Estudiante</option>
+                <option value="61986825b08741237c5e6368">Docente</option>
+                <option value="61991fba671e2b30f3a39861">Administrador</option>
             </select>
-        </div> -->
+        </div>
+
+
 
         <div class=" row">
             <button [disabled]="!formUsuario.valid" type="submit" class="btn btn-primary m-3">Registrar</button>
             <!-- <button type="submit" class="btn btn-primary m-3" (click)="crearUsuario()">Registrar</button>
-         --></div>
+         -->
+        </div>
     </div>
 </form>

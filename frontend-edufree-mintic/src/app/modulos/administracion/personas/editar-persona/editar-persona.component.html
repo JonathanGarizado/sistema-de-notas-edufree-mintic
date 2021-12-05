@@ -1,1 +1,69 @@
-<p>editar-persona works!</p>
+<!-- Formulario de registro de usuarios -->
+<h2 class="center">Edición de Usuarios</h2>
+<!-- FormGroup para validaciones -->
+<form [formGroup]="formUsuario" (ngSubmit)="editarUsuario()">
+  <input type="hidden" formControlName="id">
+
+    <div class="d-flex flex-column align-items-center">
+        <div class="form-group col-md-6">
+            <label for="inputnombre"></label>
+            <input type="text" class="form-control" id="nombres" asp-for="#" placeholder="Nombres"
+                formControlName="nombres" required>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputapellidos"></label>
+            <input type="text" class="form-control" id="apellidos" asp-for="#" placeholder="Apellidos"
+                formControlName="apellidos">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputtdocumento" class="form-label"></label>
+            <select id="#" class="form-select" asp-for="#">
+                <option selected>CÉDULA DE CIUDADANÍA</option>
+                <option>CÉDULA DE EXTRANJERA</option>
+                <option>PASAPORTE</option>
+                <option>REGISTRO CIVIL</option>
+                <option>TARJETA DE IDENTIDAD</option>
+            </select>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputnodocumento"> </label>
+            <input type="text" class="form-control" id="cedula" asp-for="#" placeholder="Numero de documento"
+                formControlName="cedula">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputemail"></label>
+            <input type="text" class="form-control" id="email" asp-for="#" placeholder="Email" formControlName="email">
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="inputclave"></label>
+          <input type="hidden" class="form-control" id="clave" placeholder="Contraseña" formControlName="clave">
+
+      </div>
+
+
+        <div class="form-group col-md-6">
+            <label for="inputtelefono"></label>
+            <input type="text" class="form-control" id="telefono" asp-for="#" placeholder="Telefono"
+                formControlName="telefono">
+        </div>
+
+
+
+        <div class="form-group col-md-6">
+            <select class="form-control" type="text" id="rolId" formControlName="rolId">
+                <option value="61986838b08741237c5e6369" selected>Estudiante</option>
+                <option value="61986825b08741237c5e6368">Docente</option>
+                <option value="61991fba671e2b30f3a39861">Administrador</option>
+            </select>
+        </div>
+
+
+
+        <div class=" row">
+            <button [disabled]="!formUsuario.valid" type="submit" class="btn btn-primary m-3">Actualizar</button>
+            <!-- <button type="submit" class="btn btn-primary m-3" (click)="crearUsuario()">Registrar</button>
+         -->
+        </div>
+    </div>
+</form>

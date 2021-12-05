@@ -1,1 +1,60 @@
-<p>buscar-persona works!</p>
+<h2 class="center">Listado de Usuarios</h2>
+<table class="table responsive">
+  <thead>
+    <tr>
+      <th scope="col">Cedula</th>
+      <th scope="col">Nombres</th>
+      <th scope="col">Apellidos</th>
+      <th scope="col">Email</th>
+      <th scope="col">Teléfono</th>
+      <th scope="col">Rol</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Una fila para cada registro en BD -->
+    <!-- Para cada usuario que esta dentro de la lista listadoUsuarios hacer -->
+    <tr *ngFor="let usuario of listadoUsuarios">
+      <td>
+        {{ usuario.cedula }}
+      </td>
+      <td>
+        {{ usuario.nombres }}
+      </td>
+      <td>
+        {{ usuario.apellidos }}
+      </td>
+      <td>
+        {{ usuario.email }}
+      </td>
+      <td>
+        {{ usuario.telefono }}
+      </td>
+      <!-- <td *ngIf="usuario.rolId == '61986838b08741237c5e6369'; else docente">
+        Estudiante
+      </td> -->
+      <td [ngSwitch]="usuario.rolId">
+        <div *ngSwitchCase="'61986838b08741237c5e6369'">Estudiante</div>
+        <div *ngSwitchCase="'61986825b08741237c5e6368'">Docente</div>
+        <div *ngSwitchCase="'61991fba671e2b30f3a39861'">Administrador</div>
+        <div *ngSwitchDefault>Indefinido</div>
+      </td>
+
+      <!-- Edicion, se le pasa el id del usuario a editar -->
+      <td>
+        <a
+          routerLink="/administracion/editar-persona/{{ usuario.id }}"
+          class="btn"
+          >Editar</a
+        >
+      </td>
+      <!-- Edicion, se le pasa el id del usuario a editar -->
+      <td>
+        <button
+          routerLink="/administracion/eliminar-persona/{{ usuario.id }}"
+          class="btn btn btn-warning red"
+          >Eliminar</button
+        >
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -4,7 +4,7 @@
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
             <li *ngIf="seInicioSesion"><a routerLink="/administracion/crear-persona">Nuevo usuario</a></li>
-            <li *ngIf="seInicioSesion"><a routerLink="#">Components</a></li>
+            <li *ngIf="seInicioSesion"><a routerLink="/administracion/buscar-persona">Usuarios</a></li>
             <li *ngIf="seInicioSesion"><a routerLink="/seguridad/cambio-clave">Cambiar Clave</a></li>
             <li *ngIf="!seInicioSesion"><a routerLink="/seguridad/identificacion">Iniciar Sesión</a></li>
             <li *ngIf="seInicioSesion"><a routerLink="/seguridad/cerrar-sesion">Cerrar Sesión</a></li>

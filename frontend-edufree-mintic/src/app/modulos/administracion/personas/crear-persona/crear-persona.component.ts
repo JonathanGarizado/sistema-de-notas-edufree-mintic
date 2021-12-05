@@ -4,6 +4,7 @@ import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ModeloUsuario } from 'src/app/modelos/usuario.modelo';
 import { UsuarioService } from 'src/app/servicios/usuario.service';
+import * as CryptoJS from 'crypto-js';
 
 
 @Component({
@@ -19,8 +20,8 @@ export class CrearPersonaComponent implements OnInit {
       cedula: ['', Validators.required],
       nombres: ['', Validators.required],
       apellidos: ['', Validators.required],
-      //Se hacen dos validaciones 
       email: ['', Validators.email],
+      clave: ['', Validators.required],
       telefono: ['', Validators.required],
       rolId: ['', Validators.required],
     }
@@ -42,17 +43,20 @@ export class CrearPersonaComponent implements OnInit {
   guardarUsuario() {
     let nombres = this.formUsuario.controls["nombres"].value;
     let apellidos = this.formUsuario.controls["apellidos"].value;
-    let cedula=this.formUsuario.controls["cedula"].value
+    let cedula = this.formUsuario.controls["cedula"].value
     let email = this.formUsuario.controls["email"].value;
+    let claveCifrada = CryptoJS.MD5(this.formUsuario.controls["clave"].value).toString();
     let telefono = this.formUsuario.controls["telefono"].value;
     let rolId = this.formUsuario.controls["rolId"].value;
+
 
     //Construir nuevo usuario de acuerdo a los datos ingresados
     let usu = new ModeloUsuario()
     usu.nombres = nombres
     usu.apellidos = apellidos
-    usu.cedula=cedula
+    usu.cedula = cedula
     usu.email = email
+    usu.clave = claveCifrada
     usu.telefono = telefono
     usu.rolId = rolId
 
@@ -66,18 +70,8 @@ export class CrearPersonaComponent implements OnInit {
 
     }, (error: any) => {
       //Cuando ocurre un error se ejecutara esto
-      alert("Paila ERROR");
+      alert("Error al crear usuario");
     })
 
-
-
-
-
-    /*  crearUsuario(): void {
-       const usuarioNuevo = this.formUsuario.getRawValue()
-   
-       //Ya que la contraseña es requerida se va a dejar vacio
-       usuarioNuevo['clave'] = "Viena126";
-     } */
   }
 }

@@ -11,15 +11,15 @@ const routes: Routes = [
     component: CrearPersonaComponent
   },
   {
-    path: 'editar-persona',
-    component: EditarPersonaComponent 
+    path: 'editar-persona/:id',
+    component: EditarPersonaComponent
   },
   {
     path: 'buscar-persona',
     component: BuscarPersonaComponent
   },
   {
-    path: 'eliminar-persona',
+    path: 'eliminar-persona/:id',
     component: EliminarPersonaComponent
   }
 ];
