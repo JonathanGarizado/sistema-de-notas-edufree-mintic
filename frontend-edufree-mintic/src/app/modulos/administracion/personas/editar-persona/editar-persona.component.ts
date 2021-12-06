@@ -62,9 +62,9 @@ export class EditarPersonaComponent implements OnInit {
     let apellidos = this.formUsuario.controls['apellidos'].value;
     let cedula = this.formUsuario.controls['cedula'].value;
     let email = this.formUsuario.controls['email'].value;
-    let claveCifrada = CryptoJS.MD5(
-      this.formUsuario.controls['clave'].value
-    ).toString();
+    // let claveCifrada = CryptoJS.MD5(
+    //   this.formUsuario.controls['clave'].value
+    // ).toString();
     let telefono = this.formUsuario.controls['telefono'].value;
     let rolId = this.formUsuario.controls['rolId'].value;
 
@@ -74,7 +74,7 @@ export class EditarPersonaComponent implements OnInit {
     usu.apellidos = apellidos;
     usu.cedula = cedula;
     usu.email = email;
-    usu.clave = claveCifrada;
+    // usu.clave = claveCifrada;
     usu.telefono = telefono;
     usu.rolId = rolId;
     usu.id=this.id
