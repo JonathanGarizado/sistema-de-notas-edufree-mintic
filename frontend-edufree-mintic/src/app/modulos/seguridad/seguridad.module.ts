@@ -6,6 +6,7 @@ import { RecuperarClaveComponent } from './recuperar-clave/recuperar-clave.compo
 import { CambioClaveComponent } from './cambio-clave/cambio-clave.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CerrarSesionComponent } from './cerrar-sesion/cerrar-sesion.component';
+import { RegistroComponent } from './registro/registro.component';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { CerrarSesionComponent } from './cerrar-sesion/cerrar-sesion.component';
     RecuperarClaveComponent,
     CambioClaveComponent,
     CerrarSesionComponent,
+    RegistroComponent,
   ],
   imports: [
     CommonModule,

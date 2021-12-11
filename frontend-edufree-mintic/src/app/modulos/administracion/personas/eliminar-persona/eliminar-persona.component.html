@@ -1,1 +1,56 @@
-<p>eliminar-persona works!</p>
+<h3>Eliminar usuario</h3>
+<h5 class="mb-4">
+  ¿Está seguro(a) de eliminar el registro con la siguiente información?
+</h5>
+
+<div class="row">
+  <form class="col s12">
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">account_circle</i>
+        <input disabled value="{{ nombre }}" id="nombres" type="text" />
+        <label class="active" for="nombres">Nombres</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">person</i>
+        <input disabled value="{{ apellidos }}" id="Apellidos" type="text" />
+        <label class="active" for="nombres">Apellidos</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">assignment_ind</i>
+        <input disabled value="{{ cedula }}" id="cedula" type="text" />
+        <label class="active" for="nombres">Cédula</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">email</i>
+        <input disabled value="{{ email }}" id="email" type="text" />
+        <label class="active" for="nombres">Email</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">phone</i>
+        <input disabled value="{{ telefono }}" id="telefono" type="text" />
+        <label class="active" for="nombres">Teléfono</label>
+      </div>
+    </div>
+    <div class="col s12">
+      <button class="btn waves-effect waves-light btn-warning red" (click)="eliminarUsuario()">
+        Eliminar<i class="material-icons right">delete_forever</i>
+      </button>
+
+      <a
+        class="waves-effect waves-light btn green m-3"
+        routerLink="/administracion/buscar-persona"
+        ><i class="material-icons right">cancel</i>Cancelar</a
+      >
+    </div>
+  </form>
+</div>

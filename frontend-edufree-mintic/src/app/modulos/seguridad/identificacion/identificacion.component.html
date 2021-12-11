@@ -1,31 +1,54 @@
 <div class="row">
-    <div class="col s12 l4 offset-14">
-        <div class="card grey lighten-3">
-            <div class="card-content">
-                <h4 id="title">Iniciar Sesión</h4>
-                <form [formGroup]="fgValidador" (ngSubmit)="IdentificarUsuario()">
-                    
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <i class="material-icons prefix">email</i>
-                            <input formControlName="usuario" type="email" id="email" class="validate">
-                            <label for="email">Correo</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <i class="material-icons prefix">vpn_key</i>
-                            <input formControlName="clave" type="password" id="clave" class="validate">
-                            <label for="clave">Contraseña</label>
-                        </div>
-                    </div>
-                    <div class="row center-aling">
-                        <button [disabled]="!fgValidador.valid" class="btn waves-effect green lighten-1" tpe="submit" name="action">Ingresar
-                            <i class="material-icons right">send</i>
-                        </button>
-                    </div>
-                </form>
+  <div class="col s12 l4 offset-14">
+    <div class="card grey lighten-3">
+      <div class="card-content">
+        <h4 id="title">Iniciar Sesión</h4>
+        <form [formGroup]="fgValidador" (ngSubmit)="IdentificarUsuario()">
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">email</i>
+              <input
+                formControlName="usuario"
+                type="email"
+                id="email"
+                class="validate"
+              />
+              <label for="email">Correo</label>
             </div>
-        </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">vpn_key</i>
+              <input
+                formControlName="clave"
+                type="password"
+                id="clave"
+                class="validate"
+              />
+              <label for="clave">Contraseña</label>
+            </div>
+          </div>
+
+          <div class="row center-aling">
+            <a
+              class="waves-effect waves-light m-3"
+              routerLink="/seguridad/registro"
+              >¿No estas registrado?</a
+            >
+          </div>
+          <div class="row center-aling">
+            <button
+              [disabled]="!fgValidador.valid"
+              class="btn waves-effect green lighten-1"
+              tpe="submit"
+              name="action"
+            >
+              Ingresar
+              <i class="material-icons right">send</i>
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
+  </div>
 </div>

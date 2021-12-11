@@ -33,7 +33,7 @@ export class EditarPersonaComponent implements OnInit {
     private router: Router,
     //Leer id de la url
     private route: ActivatedRoute) {
-    //private servicioBackend = UsuarioService
+
   }
 
   ngOnInit(): void {

@@ -21,7 +21,7 @@ export class EliminarProgramaComponent implements OnInit {
   constructor(
     private router: Router,
     private servicioPrograma: ProgramaService,
-    private route: ActivatedRoute 
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -45,7 +45,7 @@ export class EliminarProgramaComponent implements OnInit {
     this.servicioPrograma.EliminarPrograma(this.id).subscribe({
       next: (datos: any) => {
         alert("Programa eliminado correctamente");
-        this.router.navigate(["/programa"]);
+        this.router.navigate(["/administracion/buscar-persona"]);
       }
     })
   }

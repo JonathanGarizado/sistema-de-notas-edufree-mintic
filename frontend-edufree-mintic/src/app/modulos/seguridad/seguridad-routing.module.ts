@@ -5,6 +5,7 @@ import { CambioClaveComponent } from './cambio-clave/cambio-clave.component';
 import { CerrarSesionComponent } from './cerrar-sesion/cerrar-sesion.component';
 import { IdentificacionComponent } from './identificacion/identificacion.component';
 import { RecuperarClaveComponent } from './recuperar-clave/recuperar-clave.component';
+import { RegistroComponent } from './registro/registro.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'cerrar-sesion',
     component: CerrarSesionComponent
+  },
+  {
+    path: 'registro',
+    component: RegistroComponent
   }
 ];
 
