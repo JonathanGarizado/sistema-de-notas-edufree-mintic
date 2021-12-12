@@ -1,58 +1,84 @@
-<h2 class="center">Registro de Usuarios</h2>
+<h2 class="center">Registro de estudiante</h2>
 <!-- FormGroup para validaciones -->
-<form >
-    <div class="d-flex flex-column align-items-center">
-        <div class="form-group col-md-6">
-            <label for="inputnombre"></label>
-            <input type="text" class="form-control" id="nombres" asp-for="#" placeholder="Nombres"
-                formControlName="nombres" required>
-        </div>
-        <div class="form-group col-md-6">
-            <label for="inputapellidos"></label>
-            <input type="text" class="form-control" id="apellidos" asp-for="#" placeholder="Apellidos"
-                formControlName="apellidos">
-        </div>
-        <div class="form-group col-md-6">
-            <label for="inputtdocumento" class="form-label"></label>
-            <select id="#" class="form-select" asp-for="#">
-                <option selected>CÉDULA DE CIUDADANÍA</option>
-                <option>CÉDULA DE EXTRANJERA</option>
-                <option>PASAPORTE</option>
-                <option>REGISTRO CIVIL</option>
-                <option>TARJETA DE IDENTIDAD</option>
-            </select>
-        </div>
-        <div class="form-group col-md-6">
-            <label for="inputnodocumento"> </label>
-            <input type="text" class="form-control" id="cedula" asp-for="#" placeholder="Numero de documento"
-                formControlName="cedula">
-        </div>
-        <div class="form-group col-md-6">
-            <label for="inputemail"></label>
-            <input type="text" class="form-control" id="email" asp-for="#" placeholder="Email" formControlName="email">
-        </div>
-
-        <div class="form-group col-md-6">
-            <label for="inputclave"></label>
-            <input type="password" class="form-control" id="clave" placeholder="Contraseña" formControlName="clave">
-
-        </div>
-
-        <div class="form-group col-md-6">
-            <label for="inputtelefono"></label>
-            <input type="text" class="form-control" id="telefono" asp-for="#" placeholder="Telefono"
-                formControlName="telefono">
-        </div>
-
-
-
-
-
-
-        <div class=" row">
-            <button  type="submit" class="btn btn-primary m-3">Registrar</button>
-            <!-- <button type="submit" class="btn btn-primary m-3" (click)="crearUsuario()">Registrar</button>
-         -->
-        </div>
+<form [formGroup]="formUsuario" (ngSubmit)="guardarUsuario()" class="col s12">
+  <div class="d-flex flex-column align-items-center">
+    <div class="row form-group input-field col-md-6 col s12">
+      <i class="material-icons prefix">account_circle</i>
+      <input
+        id="nombres"
+        type="text"
+        class="form-control validate"
+        formControlName="nombres"
+      />
+      <label for="nombres">Nombres</label>
     </div>
+    <div class="row form-group input-field col-md-6 col s12">
+      <i class="material-icons prefix">person</i>
+      <input
+        id="apellidos"
+        type="text"
+        class="form-control validate"
+        formControlName="apellidos"
+      />
+      <label for="apellidos">Apellidos</label>
+    </div>
+
+    <div class="form-group col-md-5 mb-3">
+      <label for="inputtdocumento" class="form-label"></label>
+      <select id="#" class="form-select" asp-for="#">
+        <option selected>CÉDULA DE CIUDADANÍA</option>
+        <option>CÉDULA DE EXTRANJERA</option>
+        <option>PASAPORTE</option>
+        <option>REGISTRO CIVIL</option>
+        <option>TARJETA DE IDENTIDAD</option>
+      </select>
+    </div>
+    <div class="row form-group input-field col-md-6 col s12">
+      <i class="material-icons prefix">assignment_ind</i>
+      <input
+        id="cedula"
+        type="text"
+        class="form-control validate"
+        formControlName="cedula"
+      />
+      <label for="cedula">Número de documento</label>
+    </div>
+    <div class="row form-group input-field col-md-6 col s12">
+      <i class="material-icons prefix">email</i>
+      <input
+        id="email"
+        type="text"
+        class="form-control validate"
+        formControlName="email"
+      />
+      <label for="email">Email</label>
+    </div>
+
+    <div class="row form-group input-field col-md-6 col s12">
+      <i class="material-icons prefix">vpn_key</i>
+      <input
+        id="clave"
+        type="password"
+        class="form-control validate"
+        formControlName="clave"
+      />
+      <label for="clave">Contraseña</label>
+    </div>
+    <div class="row form-group input-field col-md-6 col s12">
+      <i class="material-icons prefix">phone</i>
+      <input
+        id="telefono"
+        type="text"
+        class="form-control validate"
+        formControlName="telefono"
+      />
+      <label for="telefono">Teléfono</label>
+    </div>
+
+    <div class="row">
+      <button [disabled]="!formUsuario.valid" type="submit" class="btn btn-primary m-3 green">Registrar</button>
+      <!-- <button type="submit" class="btn btn-primary m-3" (click)="crearUsuario()">Registrar</button>
+         -->
+    </div>
+  </div>
 </form>

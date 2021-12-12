@@ -31,10 +31,7 @@ export class CrearPersonaComponent implements OnInit {
     //Hacer uso del servicio backend
     private servicioUsuario: UsuarioService,
     //Permitir navegar
-    private router: Router) {
-
-    //private servicioBackend = UsuarioService
-  }
+    private router: Router) {}
 
   ngOnInit(): void {
   }
@@ -65,7 +62,7 @@ export class CrearPersonaComponent implements OnInit {
       //Cuando exista una respuesta por parte del observable se ejecutara este codigo
       alert("Creado correctamente");
 
-      //Permite la navegacion despues que se crea a otra parte 
+      //Permite la navegacion despues que se crea a otra parte
       this.router.navigate(["/administracion/buscar-persona"])
 
     }, (error: any) => {

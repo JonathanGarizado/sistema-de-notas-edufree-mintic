@@ -1,5 +1,5 @@
 
-  <div class="row">
+  <div class="row container">
 
     <h3 class="center-align">
       Editar Programa
@@ -11,7 +11,7 @@
         <label class="active" for="exampleInputPrograma">Programa Academico</label>
         <input formControlName="nombre" type="text" class="form-control" id="nombrePrograma" aria-describedby="ayudaPrograma"
           placeholder="Ingrese Nombre Programa" required>
-  
+
       </div>
       <div class="form-group">
         <label class="active" for="tipoProgramaAcademico">Selecione un Tipo Programa Acadmico</label>
@@ -24,12 +24,12 @@
           <option value="Doctorado">Doctorado</option>
         </select>
       </div>
-  
+
       <div class="form-group">
         <label class="active" for="exampleInputPassword1">Imagen</label>
         <input formControlName="imagen" type="text" class="form-control" id="imagen" placeholder="Dirección web imagen" required>
       </div>
-  
+
       <button [disabled]="!fgValidator.valid" type="submit" class="btn btn-primary">Editar</button>
       <a class="btn btn-warning red" routerLink="/programa">Cancelar</a>
     </form>

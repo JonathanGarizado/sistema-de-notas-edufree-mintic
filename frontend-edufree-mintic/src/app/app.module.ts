@@ -35,7 +35,8 @@ import { EliminarProgramaComponent } from './programa/eliminar-programa/eliminar
     FormsModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
