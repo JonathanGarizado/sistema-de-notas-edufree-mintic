@@ -1,6 +1,6 @@
 <nav>
   <div class="nav-wrapper">
-    <a routerLink="/inicio"><img src="./assets/LogoEF.png" width="200" height="67"></a>
+    <a routerLink="/inicio"><img src="./assets/LogoEF.png" width="200" height="63" class="logo"></a>
     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     <ul class="right hide-on-med-and-down">
       <li *ngIf="seInicioSesion"><a routerLink="/administracion/crear-persona">Nuevo usuario</a></li>
@@ -10,27 +10,14 @@
       <li *ngIf="!seInicioSesion"><a routerLink="/seguridad/identificacion">Iniciar Sesión</a></li>
       <li *ngIf="seInicioSesion"><a routerLink="/seguridad/cerrar-sesion">Cerrar Sesión</a></li>
     </ul>
-    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
-        <ul class="navbar-nav">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown
-            </a>
-            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
   </div>
 </nav>
 
 <ul class="sidenav" id="mobile-demo">
   <li *ngIf="seInicioSesion"><a routerLink="/administracion/crear-persona">Nuevo usuario</a></li>
-  <li *ngIf="seInicioSesion"><a routerLink="#">Components</a></li>
-  <li *ngIf="seInicioSesion"><a routerLink="/seguridad/cambio-clave">Cambiar Clave</a></li>
-  <li *ngIf="!seInicioSesion"><a routerLink="/seguridad/identificacion">Iniciar Sesión</a></li>
-  <li *ngIf="seInicioSesion"><a routerLink="/seguridad/cerrar-sesion">Cerrar Sesión</a></li>
+      <li *ngIf="seInicioSesion"><a routerLink="/administracion/buscar-persona">Usuarios</a></li>
+      <li *ngIf="seInicioSesion"><a routerLink="/programa">Programas Academicos</a></li>
+      <li *ngIf="seInicioSesion"><a routerLink="/administracion/buscar-materia">Materias</a></li>
+      <li *ngIf="!seInicioSesion"><a routerLink="/seguridad/identificacion">Iniciar Sesión</a></li>
+      <li *ngIf="seInicioSesion"><a routerLink="/seguridad/cerrar-sesion">Cerrar Sesión</a></li>
 </ul>

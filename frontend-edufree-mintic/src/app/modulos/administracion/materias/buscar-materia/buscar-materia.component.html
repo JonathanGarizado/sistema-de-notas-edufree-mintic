@@ -3,7 +3,12 @@
 <table class="table responsive container">
   <thead>
     <tr>
-      <th scope="col">Nombres</th>
+      <th scope="col">
+        <h5><b>Materias</b></h5>
+      </th>
+      <td>
+        <button routerLink="/administracion/crear-materia/" class="btn btn-warning green">Nueva materia</button>
+      </td>
     </tr>
   </thead>
   <tbody>
@@ -14,19 +19,11 @@
         <h5>{{ materia.nombre }}</h5>
       </td>
       <td>
-        <a
-          routerLink="/administracion/editar-materia/{{ materia.id }}"
-          class="btn"
-          >Editar</a
-        >
+        <a routerLink="/administracion/editar-materia/{{ materia.id }}" class="btn">Editar</a>
       </td>
-      <!-- Edicion, se le pasa el id del usuario a editar -->
       <td>
-        <button
-          routerLink="/administracion/eliminar-materia/{{ materia.id }}"
-          class="btn btn btn-warning red"
-          >Eliminar</button
-        >
+        <button routerLink="/administracion/eliminar-materia/{{ materia.id }}"
+          class="btn btn-warning red">Eliminar</button>
       </td>
     </tr>
   </tbody>
