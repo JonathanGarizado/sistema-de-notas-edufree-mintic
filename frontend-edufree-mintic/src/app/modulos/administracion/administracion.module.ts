@@ -6,11 +6,11 @@ import { CrearPersonaComponent } from './personas/crear-persona/crear-persona.co
 import { EditarPersonaComponent } from './personas/editar-persona/editar-persona.component';
 import { EliminarPersonaComponent } from './personas/eliminar-persona/eliminar-persona.component';
 import { BuscarPersonaComponent } from './personas/buscar-persona/buscar-persona.component';
-import { CrearProductoComponent } from './productos/crear-producto/crear-producto.component';
-import { EditarProductoComponent } from './productos/editar-producto/editar-producto.component';
-import { EliminarProductoComponent } from './productos/eliminar-producto/eliminar-producto.component';
-import { BuscarProductoComponent } from './productos/buscar-producto/buscar-producto.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CrearMateriaComponent } from './materias/crear-materia/crear-materia.component';
+import { EditarMateriaComponent } from './materias/editar-materia/editar-materia.component';
+import { EliminarMateriaComponent } from './materias/eliminar-materia/eliminar-materia.component';
+import { BuscarMateriaComponent } from './materias/buscar-materia/buscar-materia.component';
 
 
 @NgModule({
@@ -19,10 +19,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     EditarPersonaComponent,
     EliminarPersonaComponent,
     BuscarPersonaComponent,
-    CrearProductoComponent,
-    EditarProductoComponent,
-    EliminarProductoComponent,
-    BuscarProductoComponent
+    CrearMateriaComponent,
+    EditarMateriaComponent,
+    EliminarMateriaComponent,
+    BuscarMateriaComponent
   ],
   imports: [
     CommonModule,

@@ -27,7 +27,7 @@ import { EliminarProgramaComponent } from './programa/eliminar-programa/eliminar
     ErrorComponent,
     CrearProgramaComponent,
     EditarProgramaComponent,
-    EliminarProgramaComponent
+    EliminarProgramaComponent,
   ],
   imports: [
     BrowserModule,

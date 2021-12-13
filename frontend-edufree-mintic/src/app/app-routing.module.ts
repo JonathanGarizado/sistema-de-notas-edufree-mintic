@@ -28,10 +28,6 @@ const routes: Routes = [
     loadChildren: () => import("./modulos/administracion/administracion.module").then(x => x.AdministracionModule)
   },
   {
-    path: 'pedidos',
-    loadChildren: () => import("./modulos/pedidos/pedidos.module").then(x => x.PedidosModule)
-  },
-  {
     path:"estudiante",
     component:EstudianteComponent
   },

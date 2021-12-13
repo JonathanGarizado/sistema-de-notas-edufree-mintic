@@ -1,0 +1,34 @@
+<h2 class="center">Listado de Materias</h2>
+<hr>
+<table class="table responsive container">
+  <thead>
+    <tr>
+      <th scope="col">Nombres</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Una fila para cada registro en BD -->
+    <!-- Para cada usuario que esta dentro de la lista listadoUsuarios hacer -->
+    <tr *ngFor="let materia of listadoMaterias">
+      <td>
+        <h5>{{ materia.nombre }}</h5>
+      </td>
+      <td>
+        <a
+          routerLink="/administracion/editar-materia/{{ materia.id }}"
+          class="btn"
+          >Editar</a
+        >
+      </td>
+      <!-- Edicion, se le pasa el id del usuario a editar -->
+      <td>
+        <button
+          routerLink="/administracion/eliminar-materia/{{ materia.id }}"
+          class="btn btn btn-warning red"
+          >Eliminar</button
+        >
+      </td>
+    </tr>
+  </tbody>
+</table>
+<hr>

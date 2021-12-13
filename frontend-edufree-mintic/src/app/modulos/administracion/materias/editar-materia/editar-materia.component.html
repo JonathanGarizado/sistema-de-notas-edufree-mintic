@@ -1,0 +1,25 @@
+<!-- Fomulario para editar materias -->
+
+<h2 class="center">Editar Materias</h2>
+<!-- FormGroup para validaciones -->
+<form [formGroup]="formMateria" (ngSubmit)="editarMateria()">
+    <div class="d-flex flex-column align-items-center">
+        <div class="form-group col-md-6">
+            <label for="inputnombre"></label>
+            <input type="text" class="form-control" id="nombre" asp-for="#" placeholder="Nombre"
+                formControlName="nombre" required>
+        </div>
+        <div class="form-group col-md-6 ">
+            <label >Programa Académico</label>
+            <select class="form-select" id="programaAcademicoId" formControlName="programaAcademicoId">
+                <option value="619864cae4934635e07c8399">Licenciatura en Quimica</option>
+                <option value="61acf8d2a387af2db083e713">Reparación de Computadores y Moviles</option>
+                <option value="61ad3471a387af2db083e715">Inteligencia Artificial </option>
+            </select>
+        </div>
+
+        <div class=" row">
+            <button [disabled]="!formMateria.valid" type="submit" class="btn btn-primary m-3">Actualizar</button>
+        </div>
+    </div>
+</form>
